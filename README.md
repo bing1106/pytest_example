@@ -14,6 +14,6 @@ Go ahead and start the example by running the following at the top of the direct
 ```
 pytest .\test\ -v
 ```
-The -v arg will list a detailed view of the tests run while adding -s will allow print messages to show. Note that the test files in ```\test``` either has test as prefix or suffix. This tells pytest to look for these files and run the tests.
+The -v arg will list a detailed view of the tests run while adding ```-s``` will allow print messages to show. Note that the test files in ```\test``` either has test as prefix or suffix. This tells pytest to look for these files and run the tests.
 
 Test methods in each file should also begin with test_ as prefix. i.e. ```def test_some_fund():```
