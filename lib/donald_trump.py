@@ -61,7 +61,7 @@ class Donald_Trump(object):
             self.platform.publish_msg(msg)
         else:
             self.platform.publish_msg(msg)
-            self.enemies += 1
+        self.enemies += 1    
         self.switch_platform()
     
     def has_too_many_enemies(self):
