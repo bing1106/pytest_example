@@ -10,6 +10,8 @@ class Social_Media(object):
         self.timestamp = time
     def publish_msg(self, msg):
         pass
+    def platform_followers(self, msg):
+        pass
     def __str__(self):
         return self.__class__.__name__
 
@@ -17,17 +19,23 @@ class Social_Media(object):
 class Twitter(Social_Media):
     def publish_msg(self, msg):
         print("Tweeting: " + msg)
+    def platform_followers(self):
+        return 1000000
 
-
+    
 class Facebook(Social_Media):
     def publish_msg(self, msg):
         print("Facebooking: " + msg)
-
+    def platform_followers(self):
+        return 20000
+        
         
 class Instagram(Social_Media):
     def publish_msg(self, msg):
         print("Instagramming: " + msg)
-
+    def platform_followers(self):
+        return 230
+    
 
 class Donald_Trump(object):
 
@@ -41,20 +49,21 @@ class Donald_Trump(object):
     def switch_platform(self):
         total_enemies = self.check_enemies()
         if total_enemies > 15:
-            self.platform = Instagram(timestamp=100)
+            self.platform = Instagram(time=100)
         elif total_enemies > 10:
-            self.platform = Facebook(timestamp=200)
+            self.platform = Facebook(time=200)
         else:
             pass
     
     def publish_message(self, msg):
-        self.platform.publish_msg(msg)
         if tutil.msg_len(msg) > msgTooLongThresh:
-            self.enemies += 2
+            self.platform.publish_msg(msg)
+            self.platform.publish_msg(msg)
         else:
+            self.platform.publish_msg(msg)
             self.enemies += 1
         self.switch_platform()
     
     def has_too_many_enemies(self):
-        return True if self.check_enemies > maxEnemyThreshold else False
+        return True if self.check_enemies() > maxEnemyThresh else False
     

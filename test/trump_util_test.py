@@ -41,7 +41,8 @@ def test_add_two_num():
     
 
 '''
-Better way to test larger functions would be to parametrize test data
+Better way to test larger functions would be to parametrize test data.
+The parametrized fields must be given to the test function as args
 '''
 test_data_concat_two_strings = [
     ("Hello ", "world!", "Hello world!"),
@@ -70,15 +71,12 @@ def test_calc_abs(mock_absolute):
 Another way to patch with return value inside context manager
 '''
 def test_calc_abs_2():
-    
     # regular behavior
     assert tutil.calc_abs(-6) == 6
     assert tutil.calc_abs(34) == 34
-    
     # declare return value in header
     with patch.object(tutil.np, 'absolute', return_value=100):
         assert tutil.calc_abs(-3) == 100
-        
     # assign return value on the fly
     with patch.object(tutil.np, 'absolute'):
         tutil.np.absolute.return_value = -6
